@@ -212,7 +212,7 @@ demievent_nochangelist_del(struct event_base *base, evutil_socket_t fd,
   if (fd < 500) {
     ret = evbase->libc_epoll_ctl(evbase->epfd, EPOLL_CTL_DEL, fd, NULL);
   } else {
-    ret = epoll_ctl(evbase->epfd, EPOLL_CTL_DEL, fd, NULL);
+    ret = epoll_ctl(evbase->demi_epfd, EPOLL_CTL_DEL, fd, NULL);
   }
 
   if (ret == -1 && errno == EBADF) {
